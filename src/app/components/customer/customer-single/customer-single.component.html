@@ -1,0 +1,34 @@
+<div class="card mt-5">
+    <div class="card-body">
+        <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+            <!-- TO UPDATE -->
+
+
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="identification" name="identification" placeholder="Identification">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="name" name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="address" name="address" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="phone" name="phone" placeholder="Phone">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="mail" name="mail" placeholder="Mail">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" [disabled]="form.invalid" type="submit">
+                  <i class="fas fa-plus-circle"></i> Save Customer
+              </button>
+                <button class="btn btn-secondary" type="reset" (click)="resetForm()">
+                  <i class="fas fa-sync-alt"></i> Reset
+              </button>
+            </div>
+
+        </form>
+    </div>
+</div>

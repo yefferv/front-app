@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-body card-header">
+        <h6 class="text-center">
+            List of Customers
+        </h6>
+        <table id="customers" class="table table-sm table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Identification</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customerList">
+                    <td>{{customer.identification}}</td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.address}}</td>
+                    <td>{{customer.phone}}</td>
+                    <td>{{customer.mail}}</td>
+                    <td>
+                        <a class="btn btn-secondary text-white" (click)="onEdit(customer)">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger text-white" (click)="onDelete(customer.identification)">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
