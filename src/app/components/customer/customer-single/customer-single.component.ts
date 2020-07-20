@@ -57,7 +57,7 @@ export class CustomerSingleComponent implements OnInit {
 
     this.stateControls('identification', 'disable');
 
-  };
+  }
 
   onSubmit(): void
   {
@@ -65,11 +65,11 @@ export class CustomerSingleComponent implements OnInit {
     {
       this.customerService.createCustomer(this.form.value)
       .subscribe( customer => customer);
-      this.toastr.success('Sucessful Operation', 'Product created');
+      this.toastr.success('Sucessful Operation', 'Customer created');
     } else {
       this.customerService.updateCustomer(this.customerService.selectedCustomer.identification, this.form.value)
       .subscribe( customer => customer);
-      this.toastr.success('Sucessful Operation', 'Update product');
+      this.toastr.success('Sucessful Operation', 'Update customer');
     }
     this.customerService.emitter.emit();
     this.resetForm();

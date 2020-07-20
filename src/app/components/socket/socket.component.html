@@ -1,1 +1,91 @@
-<p>pendiente CRUD de socket</p>
+<div class="card">
+    <div class="card-body card-header">
+        <h6 class="text-center">
+            List of Sockets
+        </h6>
+        <div class="main-container">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" (click)="showSaveDialog(false,socket)">New Socket</button>
+            <div #closeModal class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New Socket</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                        </div>
+                        <div class="modal-body">
+                            <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="code" name="code" placeholder="Code">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="city" name="city" placeholder="City">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="address" name="address" placeholder="Address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="coordinateX" name="coordinateX" placeholder="CoordinateX">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="coordinateY" name="coordinateY" placeholder="CoordinateY">
+                                </div>
+                                <!-- <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="customer_identification" name="customer_identification" placeholder="Customer Identification">
+                                </div -->
+                                <div class="form-group">
+                                    <select class="form-control" formControlName="customer_identification" id="customer_identification" name="customer_identification" placeholder="Customer Identification">
+                                      <option *ngFor="let customer of customerList">{{customer.identification}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-primary" [disabled]="form.invalid" type="submit">
+                                            <i class="fas fa-plus-circle"></i> Save 
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table id="tableSocket" class="table table-sm table-hover">
+            <thead class="thead-ligth">
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">CoordinateX</th>
+                    <th scope="col">CoordinateY</th>
+                    <th scope="col">Customer Identification</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let socket of sockets">
+                    <td>{{socket.code}}</td>
+                    <td>{{socket.city}}</td>
+                    <td>{{socket.address}}</td>
+                    <td>{{socket.coordinateX}}</td>
+                    <td>{{socket.coordinateY}}</td>
+                    <td>{{socket.customer_identification}}</td>
+                    <td>
+                        <button class="btn btn-info btn-rounded btn-sm buttonEdit" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" (click)="showSaveDialog(true,socket)">Edit </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" (click)="delete(socket)">Remove</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
